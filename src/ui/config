@@ -1,0 +1,14 @@
+{
+  ".url": {
+    "SYNO.SDS.OpenSpeedtest": {
+      "type"     : "url",
+      "icon"     : "images/icon_256.png",
+      "title"    : "OpenSpeedTest",
+      "desc"     : "OpenSpeedTest for Synology NAS",
+      "url"      : "webman/3rdparty/OpenSpeedtest/index.html",
+      "width"    : 1000,
+      "height"   : 700,
+      "allUsers" : true
+    }
+  }
+}

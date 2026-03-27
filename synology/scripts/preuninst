@@ -1,0 +1,13 @@
+#!/bin/bash
+
+PKG_NAME=$(basename "$SYNOPKG_PKGDEST")
+VAR_DIR="/var/packages/$PKG_NAME/var"
+
+log_message() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" >> "$VAR_DIR/install.log" 2>/dev/null || echo "$1"
+}
+
+rm -f "/usr/syno/synoman/webman/3rdparty/$PKG_NAME"
+log_message "Removed web interface symlink"
+
+exit 0

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+PKG_NAME=$(basename "$SYNOPKG_PKGDEST")
+
+case $1 in
+    start)
+        exit 0
+        ;;
+    stop)
+        exit 0
+        ;;
+    status)
+        if [ -f "/var/packages/$PKG_NAME/target/ui/index.html" ]; then
+            exit 0
+        else
+            exit 1
+        fi
+        ;;
+esac

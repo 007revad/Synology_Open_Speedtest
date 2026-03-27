@@ -1,0 +1,29 @@
+#!/bin/bash
+
+PKG_NAME=$(basename "$SYNOPKG_PKGDEST")
+VAR_DIR="/var/packages/$PKG_NAME/var"
+
+log_message() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" >> "$VAR_DIR/install.log" 2>/dev/null || echo "$1"
+}
+
+log_message "Post-installation starting for package: $PKG_NAME"
+
+if mkdir -p "$VAR_DIR"; then
+    log_message "VAR_DIR created: $VAR_DIR"
+else
+    log_message "Error: Failed to create VAR_DIR"
+    exit 1
+fi
+
+if ln -sf "/var/packages/$PKG_NAME/target/ui" \
+          "/usr/syno/synoman/webman/3rdparty/$PKG_NAME"; then
+    log_message "Created web interface symlink"
+else
+    log_message "Error: Failed to create web interface symlink"
+    exit 1
+fi
+
+log_message "Post-installation completed successfully"
+echo >> "$VAR_DIR/install.log"
+exit 0
