@@ -9,7 +9,7 @@
 
 ### Description
 
-Synology package to install Open Speedtest and run it in a GUI.
+Synology package to install OpenSpeedTest and run it in a GUI to test your LAN speed.
 
 ### Download the package
 
