@@ -21,9 +21,9 @@ Synology package to install OpenSpeedTest and run it in a GUI to test your LAN s
 ### Screenshots
 
 <!--- <p align="center">Description of image 1 goes here</p> --->
-<p align="center"><img src="/images/IMAGE_NAME.png"></p>
+<p align="center"><img src="/images/installed.png"></p>
 
 <br>
 
 <!--- <p align="center">Description of image 2 goes here</p> --->
-<p align="center"><img src="/images/IMAGE_NAME.png"></p>
+<p align="center"><img src="/images/result.png"></p>
