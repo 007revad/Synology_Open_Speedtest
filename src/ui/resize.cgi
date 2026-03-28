@@ -50,7 +50,7 @@ case "$ACTION" in
         case "$SIZE_MB" in
             500|1000|1500|2000|3000|4000) ;;
             *)
-                echo "{\"success\":false, \"message\":\"Invalid size. Allowed: 500, 1024, 1536, 2048, 3072, 4096\"}"
+                echo "{\"success\":false, \"message\":\"Invalid size. Allowed: 500, 1000, 1500, 2000, 3000, 4000\"}"
                 exit 0
                 ;;
         esac

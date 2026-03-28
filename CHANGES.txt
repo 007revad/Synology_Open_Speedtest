@@ -1,3 +1,6 @@
+v1.0.4
+- Bug fix for false "Invalid size selected" error being logged when applying selected test file size.
+
 v1.0.3
 - Dynamically adjusts OpenSpeedTest page so there's less blank space below toolbar.
 
