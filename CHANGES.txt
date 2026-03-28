@@ -1,2 +1,3 @@
-v1.0.1
-- First release.
+v1.0.2
+- Updated description to include "LAN speed test.
+- Removed 30 MB uploading test file.
