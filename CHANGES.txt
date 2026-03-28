@@ -1,5 +1,11 @@
+v1.0.3
+- Dynamically adjusts OpenSpeedTest page so there's less blank space below toolbar.
+
 v1.0.2
 - Added 500MB, 1GB, 1.5GB, 2GB 3GB or 4GB options to select test file size.
 - Added the hostname or IP address of the devices being tested.
 - Updated description to include "LAN speed test".
 - Removed 30 MB uploading test file from package.
+
+v1.0.1
+- First release.
