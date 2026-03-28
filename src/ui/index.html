@@ -88,7 +88,7 @@
     #ost-status.ok  { color: #5fca5f; }
     #ost-status.err { color: #e05555; }
     /* Push OpenSpeedTest UI down so toolbar doesn't overlap */
-    body { padding-top: 36px; }
+    /* padding-top set dynamically by JS below */
   </style>
 </head>
 <body>
@@ -334,6 +334,15 @@ please get in touch with support@openspeedtest.com.
         }
       });
     });
+    // Set body padding to match toolbar height, update on resize
+    function updatePadding() {
+      var toolbar = document.getElementById('ost-toolbar');
+      if (toolbar) {
+        document.body.style.paddingTop = toolbar.offsetHeight + 'px';
+      }
+    }
+    updatePadding();
+    window.addEventListener('resize', updatePadding);
   })();
   </script>
 
