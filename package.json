@@ -1,7 +1,7 @@
 {
-  "package": "Syno-Open-Speedtest",
+  "package": "Syno-OpenSpeedTest",
   "name": "OpenSpeedTest",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "OpenSpeedTest for Synology NAS",
   "target": "./src",
   "install_type": "package",

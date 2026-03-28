@@ -1,3 +1,5 @@
 v1.0.2
-- Updated description to include "LAN speed test.
-- Removed 30 MB uploading test file.
+- Added 500MB, 1GB, 1.5GB, 2GB 3GB or 4GB options to select test file size.
+- Added the hostname or IP address of the devices being tested.
+- Updated description to include "LAN speed test".
+- Removed 30 MB uploading test file from package.
