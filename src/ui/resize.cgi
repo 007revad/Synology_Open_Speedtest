@@ -48,9 +48,9 @@ case "$ACTION" in
 
         # Validate size_mb is a positive integer and within allowed presets
         case "$SIZE_MB" in
-            500|1000|1500|2000|3000|4000) ;;
+            250|500|1000|1500|2000|3000|4000) ;;
             *)
-                echo "{\"success\":false, \"message\":\"Invalid size. Allowed: 500, 1000, 1500, 2000, 3000, 4000\"}"
+                echo "{\"success\":false, \"message\":\"Invalid size. Allowed: 250, 500, 1000, 1500, 2000, 3000, 4000\"}"
                 exit 0
                 ;;
         esac

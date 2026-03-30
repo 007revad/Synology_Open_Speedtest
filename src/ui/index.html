@@ -103,6 +103,7 @@
     <div id="ost-size-controls">
       <label for="ost-size-select">Test file:</label>
       <select id="ost-size-select">
+        <option value="250">250 MB</option>
         <option value="500">500 MB</option>
         <option value="1000">1 GB</option>
         <option value="1500">1.5 GB</option>
@@ -285,6 +286,10 @@ please get in touch with support@openspeedtest.com.
       xhr.send(body);
     }
 
+    function resetUI() {
+        setTimeout(function() { location.reload(); }, 500);
+    }
+
     // Load info on page load
     callCGI('info', null, function(err, data) {
       if (err || !data || !data.success) {
@@ -299,26 +304,30 @@ please get in touch with support@openspeedtest.com.
 
       // Select the matching file size option
       var currentMB = data.current_size_mb;
+      sizeSelect.dataset.currentSize = String(currentMB);
+
       var opts = sizeSelect.options;
-      var matched = false;
       for (var i = 0; i < opts.length; i++) {
         if (parseInt(opts[i].value) === currentMB) {
           sizeSelect.selectedIndex = i;
-          matched = true;
           break;
         }
       }
-      if (!matched) {
-        statusEl.textContent = 'File: ' + currentMB + ' MB';
-      } else {
-        statusEl.textContent = 'File: ' + currentMB + ' MB';
-      }
+      statusEl.textContent = 'File: ' + currentMB + ' MB';
       statusEl.className = 'ok';
     });
 
     // Apply button
     applyBtn.addEventListener('click', function() {
       var sizeMB = sizeSelect.value;
+
+      if (sizeMB === sizeSelect.dataset.currentSize) {
+        statusEl.textContent = 'File: ' + sizeMB + ' MB (unchanged)';
+        statusEl.className = 'ok';
+        setTimeout(resetUI, 300);
+        return;
+      }
+
       applyBtn.disabled = true;
       statusEl.textContent = 'Resizing… please wait';
       statusEl.className = '';
@@ -329,11 +338,14 @@ please get in touch with support@openspeedtest.com.
           statusEl.textContent = (data && data.message) ? data.message : 'Resize failed';
           statusEl.className = 'err';
         } else {
+          sizeSelect.dataset.currentSize = String(data.size_mb);
           statusEl.textContent = 'File: ' + data.size_mb + ' MB ✓';
           statusEl.className = 'ok';
+          setTimeout(resetUI, 300);
         }
       });
     });
+
     // Set body padding to match toolbar height, update on resize
     function updatePadding() {
       var toolbar = document.getElementById('ost-toolbar');
