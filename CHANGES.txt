@@ -1,3 +1,6 @@
+v1.0.6
+- Bug fix for Upload speed being estimated by OpenSpeedTest due to nginx cgi errors.
+
 v1.0.5
 - Changed to reload the OpenSpeedTest UI after clicking Apply so you can run another test without reloading the web page.
 - Added 250MB option to select test file size.

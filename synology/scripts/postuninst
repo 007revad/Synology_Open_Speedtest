@@ -4,14 +4,4 @@
 PKG_NAME=$(basename "$SYNOPKG_PKGDEST")
 rm -f /usr/syno/synoman/webman/3rdparty/$PKG_NAME
 
-# Create 30MB download test file
-DOWNLOAD_FILE="/var/packages/$PKG_NAME/target/ui/downloading"
-if dd if=/dev/zero of="$DOWNLOAD_FILE" bs=1M count=30 2>/dev/null; then
-    log_message "Created 30MB downloading test file"
-else
-    log_message "Error: Failed to create downloading test file"
-    exit 1
-fi
-
 exit 0
-

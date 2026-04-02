@@ -39,6 +39,10 @@ fi
 chmod +x "$UI_DIR/resize.cgi" 2>/dev/null
 log_message "Set execute permission on resize.cgi"
 
+# Set execute permission on upload.cgi
+chmod +x "$UI_DIR/upload.cgi" 2>/dev/null
+log_message "Set execute permission on upload.cgi"
+
 # Create 500MB download test file
 DOWNLOAD_FILE="$UI_DIR/downloading"
 if dd if=/dev/zero of="$DOWNLOAD_FILE" bs=1M count=500 2>/dev/null; then

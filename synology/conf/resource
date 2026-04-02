@@ -1,0 +1,11 @@
+{
+  "systemd-unit": {},
+  "web-config": {
+    "nginx-static-config": {
+      "enable": [{
+        "type": "dsm",
+        "relpath": "conf/nginx-upload.conf"
+      }]
+    }
+  }
+}
