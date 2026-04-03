@@ -4,7 +4,7 @@
     "nginx-static-config": {
       "enable": [{
         "type": "dsm",
-        "relpath": "conf/nginx-upload.conf"
+        "relpath": "nginx-upload.conf"
       }]
     }
   }

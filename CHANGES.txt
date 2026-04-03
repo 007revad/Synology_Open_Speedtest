@@ -1,3 +1,6 @@
+v1.0.7
+- Bug fix for Upload speed being estimated by OpenSpeedTest due to nginx cgi errors.
+
 v1.0.6
 - Bug fix for Upload speed being estimated by OpenSpeedTest due to nginx cgi errors.
 
