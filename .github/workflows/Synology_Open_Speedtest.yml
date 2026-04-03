@@ -55,7 +55,7 @@ jobs:
           fi
 
       - name: Synology Package Builder Github Action
-        uses: tomgrv/synology-package-builder@v1.3.0
+        uses: 007revad/synology-package-builder@main
         with:
           dsm: ${{ matrix.dsm }}
           arch: ${{ matrix.arch }}
