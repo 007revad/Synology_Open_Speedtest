@@ -1,8 +1,8 @@
 {
-  "package": "Syno-OpenSpeedTest",
+  "package": "OpenSpeedTest",
   "name": "OpenSpeedTest",
   "version": "1.0.8",
-  "description": "OpenSpeedTest for Synology NAS",
+  "description": "OpenSpeedTest to test LAN speed",
   "target": "./src",
   "install_type": "package",
   "dsmuidir": "ui",
