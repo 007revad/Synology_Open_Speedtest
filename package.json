@@ -1,7 +1,7 @@
 {
   "package": "OpenSpeedTest",
   "name": "OpenSpeedTest",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "OpenSpeedTest to test LAN speed",
   "target": "./src",
   "install_type": "package",
