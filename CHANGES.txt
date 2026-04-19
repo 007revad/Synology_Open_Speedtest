@@ -1,3 +1,6 @@
+v1.0.9
+- Minor changes for making the package available in Package Center from my spk repository.
+
 v1.0.8
 - Bug fix for Upload speed being estimated by OpenSpeedTest due to nginx cgi errors.
 
