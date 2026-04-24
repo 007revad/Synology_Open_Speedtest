@@ -1,5 +1,5 @@
 v1.0.10
-- Bug fix for repo URL showing as Publisher in Package Center.
+- Bug fix for GitHub repo URL showing as Publisher in Package Center.
 
 v1.0.9
 - Minor changes for making the package available in Package Center from my spk repository.
