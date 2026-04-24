@@ -11,8 +11,16 @@
 
 Synology package to install OpenSpeedTest and run it in a GUI to test your LAN speed.
 
-### Download the package
+### How to install the package
 
+There are 2 ways to install the package:
+
+**Directly from Package Center**
+
+1. Add [007revad Synology Package Source](https://github.com/007revad/Synology_package_source/blob/main/README.md) to package Center.
+2. Click on the Community section in Package Center and install the package.
+
+**Or download the package and install it manually**
 1. Download the latest version .spk file from https://github.com/007revad/Synology_Open_Speedtest/releases and save it to your Synology.
 2. In Package Center click on Manual Install.
 3. Browse to where you downloaded the .spk file.
