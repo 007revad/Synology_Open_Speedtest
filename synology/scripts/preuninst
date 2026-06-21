@@ -2,6 +2,7 @@
 
 PKG_NAME=$(basename "$SYNOPKG_PKGDEST")
 VAR_DIR="/var/packages/$PKG_NAME/var"
+DSM=$(get_key_value /etc.defaults/VERSION majorversion)
 
 log_message() {
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" >> "$VAR_DIR/install.log" 2>/dev/null || echo "$1"
@@ -9,5 +10,10 @@ log_message() {
 
 rm -f "/usr/syno/synoman/webman/3rdparty/$PKG_NAME"
 log_message "Removed web interface symlink"
+
+if [[ "$DSM" -le "6" ]]; then
+    rm -f "/usr/syno/share/nginx/conf.d/dsm.$PKG_NAME.conf"
+    log_message "Removed DSM 6 nginx config symlink"
+fi
 
 exit 0

@@ -1,12 +1,38 @@
 #!/bin/bash
 
 PKG_NAME=$(basename "$SYNOPKG_PKGDEST")
+VAR_DIR="/var/packages/$PKG_NAME/var"
+NGINX_LINK="/usr/syno/share/nginx/conf.d/dsm.$PKG_NAME.conf"
+NGINX_SRC="/var/packages/$PKG_NAME/target/conf/nginx-upload.conf"
+DSM=$(get_key_value /etc.defaults/VERSION majorversion)
+
+log_message() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" >> "$VAR_DIR/install.log" 2>/dev/null || echo "$1"
+}
 
 case $1 in
     start)
+        if [[ "$DSM" -le "6" ]]; then
+            if ln -sf "$NGINX_SRC" "$NGINX_LINK"; then
+                if nginx -t 2>/dev/null; then
+                    nginx -s reload 2>/dev/null
+                    log_message "DSM 6: linked and reloaded nginx for upload.cgi route"
+                else
+                    rm -f "$NGINX_LINK"
+                    log_message "Error: nginx config test failed, removed DSM 6 symlink"
+                fi
+            else
+                log_message "Error: Failed to create DSM 6 nginx config symlink"
+            fi
+        fi
         exit 0
         ;;
     stop)
+        if [[ "$DSM" -le "6" ]]; then
+            rm -f "$NGINX_LINK"
+            nginx -t 2>/dev/null && nginx -s reload 2>/dev/null
+            log_message "DSM 6: removed nginx symlink and reloaded"
+        fi
         exit 0
         ;;
     status)
