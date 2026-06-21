@@ -9,7 +9,9 @@
 
 ### Description
 
-Synology DSM 7 package to install OpenSpeedTest and run it in a GUI to test your LAN speed.
+Synology package to install OpenSpeedTest and run it in a GUI to test your LAN speed.
+
+Available for DSM 7 and DSM 6
 
 ### How to install the package
 
