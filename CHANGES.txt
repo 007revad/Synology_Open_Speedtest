@@ -1,3 +1,6 @@
+v1.0.14
+- Bug fix for v1.0.13 having v1.0.12 in it's INFO file.
+
 v1.0.13
 - Added package for DSM 6.
 - Bug fixes for DSM 7 installation failing.
