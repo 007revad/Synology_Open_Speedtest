@@ -23,15 +23,6 @@ rm -rf "$UI_DIR/texts/strings"  # strings file template
 rm -f  "$UI_DIR/ui"  # self-referencing symlink
 log_message "Removed spurious package builder files"
 
-# Create web interface symlink
-#if ln -sf "/var/packages/$PKG_NAME/target/ui" \
-#          "/usr/syno/synoman/webman/3rdparty/$PKG_NAME"; then
-#    log_message "Created web interface symlink"
-#else
-#    log_message "Error: Failed to create web interface symlink"
-#    exit 1
-#fi
-
 # Create nginx config symlink
 if [[ "$DSM" -le "6" ]]; then
     if ln -sf "/var/packages/$PKG_NAME/target/conf/nginx-upload.conf" \

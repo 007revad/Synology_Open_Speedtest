@@ -1,7 +1,3 @@
 #!/bin/bash
 
-# Remove symbolic link
-PKG_NAME=$(basename "$SYNOPKG_PKGDEST")
-rm -f /usr/syno/synoman/webman/3rdparty/$PKG_NAME
-
 exit 0
