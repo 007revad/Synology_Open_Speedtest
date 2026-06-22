@@ -5,8 +5,6 @@
   "description": "OpenSpeedTest to test LAN speed",
   "target": "./src",
   "install_type": "package",
-  "dsmuidir": "ui",
-  "dsmappname": "SYNO.SDS.OpenSpeedTest",
   "install_dep_packages": "",
   "instuninst_restart_services": "nginx.service",
   "startstop_restart_services": "nginx.service",
@@ -24,6 +22,8 @@
     "os_max_ver": "9.9-99999",
     "arch": "x86_64",
     "displayname": "OpenSpeedTest",
+    "dsmuidir": "ui",
+    "dsmappname": "SYNO.SDS.OpenSpeedTest",
     "thirdparty": "yes",
     "beta": "no"
   }
