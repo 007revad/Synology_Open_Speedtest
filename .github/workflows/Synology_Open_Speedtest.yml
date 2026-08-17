@@ -51,7 +51,7 @@ jobs:
           count=$(echo "$dsm_list" | jq 'if type == "array" then length else 1 end')
           current="${{ matrix.dsm }}"
           if [ "$count" -eq 1 ] && [ "$current" = "7.0" ]; then
-            echo "suffix=DSM-7.x" >> $GITHUB_OUTPUT
+            echo "suffix=DSM-7.2" >> $GITHUB_OUTPUT
           else
             echo "suffix=DSM-${current}" >> $GITHUB_OUTPUT
           fi
