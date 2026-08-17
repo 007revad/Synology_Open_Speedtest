@@ -1,7 +1,7 @@
 {
   "package": "OpenSpeedTest",
   "name": "OpenSpeedTest",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "OpenSpeedTest to test LAN speed",
   "target": "./src",
   "install_type": "package",
@@ -18,7 +18,7 @@
     "distributor_url": "https://github.com/007revad/Synology_Open_Speedtest",
     "support_url": "https://github.com/007revad/Synology_Open_Speedtest/issues",
     "help_url": "https://github.com/007revad/Synology_Open_Speedtest#README.md",
-    "os_min_ver": "7.0-40337",
+    "os_min_ver": "7.2-64570",
     "os_max_ver": "9.9-99999",
     "arch": "x86_64",
     "displayname": "OpenSpeedTest",

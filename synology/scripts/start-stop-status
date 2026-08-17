@@ -1,22 +1,31 @@
 #!/bin/bash
 
 PKG_NAME=$(basename "$SYNOPKG_PKGDEST")
-VAR_DIR="/var/packages/$PKG_NAME/var"
 NGINX_LINK="/usr/syno/share/nginx/conf.d/dsm.$PKG_NAME.conf"
 NGINX_SRC="/var/packages/$PKG_NAME/target/conf/nginx-upload.conf"
+BUILD=$(get_key_value /etc.defaults/VERSION buildnumber)
 DSM=$(get_key_value /etc.defaults/VERSION majorversion)
+if [[ "$DSM" -gt "6" ]]; then
+    VAR_DIR="/var/packages/$PKG_NAME/var"
+else
+    VAR_DIR="/var/packages/$PKG_NAME/etc"
+fi
 
 log_message() {
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" >> "$VAR_DIR/install.log" 2>/dev/null || echo "$1"
 }
 
+mkdir -p "$VAR_DIR" 2>/dev/null || true
+echo "" >> "$VAR_DIR/install.log"
+
 case $1 in
     start)
-        if [[ "$DSM" -le "6" ]]; then
+        #if [[ "$DSM" -le "6" ]]; then
+        if [[ "$BUILD" -le "64000" ]]; then  # DSM 6, 7.0 and 7.1
             if ln -sf "$NGINX_SRC" "$NGINX_LINK"; then
                 if nginx -t 2>/dev/null; then
                     nginx -s reload 2>/dev/null
-                    log_message "DSM 6: linked and reloaded nginx for upload.cgi route"
+                    log_message "DSM 6 to 7.1: linked and reloaded nginx for upload.cgi route"
                 else
                     rm -f "$NGINX_LINK"
                     log_message "Error: nginx config test failed, removed DSM 6 symlink"
@@ -28,10 +37,11 @@ case $1 in
         exit 0
         ;;
     stop)
-        if [[ "$DSM" -le "6" ]]; then
+        #if [[ "$DSM" -le "6" ]]; then
+        if [[ "$BUILD" -le "64000" ]]; then  # DSM 6, 7.0 and 7.1
             rm -f "$NGINX_LINK"
             nginx -t 2>/dev/null && nginx -s reload 2>/dev/null
-            log_message "DSM 6: removed nginx symlink and reloaded"
+            log_message "DSM 6 to 7.1: removed nginx symlink and reloaded"
         fi
         exit 0
         ;;

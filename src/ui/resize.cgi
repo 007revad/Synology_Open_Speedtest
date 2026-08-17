@@ -8,7 +8,12 @@ PKG_ROOT="/var/packages/${PKG_NAME}"
 TARGET_DIR="${PKG_ROOT}/target"
 UI_DIR="${TARGET_DIR}/ui"
 DOWNLOAD_FILE="${UI_DIR}/downloading"
-LOG_DIR="${PKG_ROOT}/var"
+DSM=$(get_key_value /etc.defaults/VERSION majorversion)
+if [[ "$DSM" -gt "6" ]]; then
+    LOG_DIR="/var/packages/$PKG_NAME/var"
+else
+    LOG_DIR="/var/packages/$PKG_NAME/etc"
+fi
 LOG_FILE="${LOG_DIR}/resize.log"
 
 mkdir -p "${LOG_DIR}"

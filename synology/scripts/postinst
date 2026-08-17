@@ -1,13 +1,20 @@
 #!/bin/bash
 
 PKG_NAME=$(basename "$SYNOPKG_PKGDEST")
-VAR_DIR="/var/packages/$PKG_NAME/var"
 UI_DIR="/var/packages/$PKG_NAME/target/ui"
+BUILD=$(get_key_value /etc.defaults/VERSION buildnumber)
 DSM=$(get_key_value /etc.defaults/VERSION majorversion)
+if [[ "$DSM" -gt "6" ]]; then
+    VAR_DIR="/var/packages/$PKG_NAME/var"
+else
+    VAR_DIR="/var/packages/$PKG_NAME/etc"
+fi
 
 log_message() {
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" >> "$VAR_DIR/install.log" 2>/dev/null || echo "$1"
 }
+
+echo "" >> "$VAR_DIR/install.log"
 
 # Create var directory for logs
 mkdir -p "$VAR_DIR" || { echo "Error: Failed to create VAR_DIR"; exit 1; }
@@ -24,7 +31,8 @@ rm -f  "$UI_DIR/ui"  # self-referencing symlink
 log_message "Removed spurious package builder files"
 
 # Create nginx config symlink
-if [[ "$DSM" -le "6" ]]; then
+#if [[ "$DSM" -le "6" ]]; then
+if [[ "$BUILD" -le "64000" ]]; then  # DSM 6, 7.0 and 7.1
     if ln -sf "/var/packages/$PKG_NAME/target/conf/nginx-upload.conf" \
               "/usr/syno/share/nginx/conf.d/dsm.$PKG_NAME.conf"; then
         log_message "Created DSM 6 nginx config symlink"
