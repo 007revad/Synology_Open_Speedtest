@@ -1,6 +1,7 @@
 #!/bin/bash
 
 PKG_NAME=$(basename "$SYNOPKG_PKGDEST")
+WEBMAN_LINK="/usr/syno/synoman/webman/3rdparty/${PKG_NAME}"
 BUILD=$(get_key_value /etc.defaults/VERSION buildnumber)
 DSM=$(get_key_value /etc.defaults/VERSION majorversion)
 if [[ "$DSM" -gt "6" ]]; then
@@ -10,19 +11,20 @@ else
 fi
 
 log_message() {
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" >> "$VAR_DIR/install.log" 2>/dev/null || echo "$1"
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" >> "${VAR_DIR}/install.log" 2>/dev/null || echo "$1"
 }
 
 mkdir -p "$VAR_DIR" 2>/dev/null || true
 echo "" >> "$VAR_DIR/install.log"
 
-rm -f "/usr/syno/synoman/webman/3rdparty/$PKG_NAME"
-log_message "Removed web interface symlink"
+rm -f "${WEBMAN_LINK}" && \
+    log_message "Removed webman symlink" || \
+    log_message "Warning: Could not remove webman symlink"
 
 #if [[ "$DSM" -le "6" ]]; then
 if [[ "$BUILD" -le "64000" ]]; then  # DSM 6, 7.0 and 7.1
     rm -f "/usr/syno/share/nginx/conf.d/dsm.$PKG_NAME.conf"
-    log_message "Removed DSM 6 nginx config symlink"
+    log_message "Removed DSM 6, 7.0, 7.1 nginx config symlink"
 fi
 
 exit 0
