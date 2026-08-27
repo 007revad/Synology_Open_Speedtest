@@ -1,3 +1,6 @@
+v1.0.16
+- Bug fix for DSM 7.0-7.1.
+
 v1.0.15
 - Bug fix for DSM 7.0 and 7.1. Now creates a DSM 7.0-71 package (as well as DMS 6 and 7.2).
   - DSM 7.2 package works for 7.2, 7.3 and 7.4.
