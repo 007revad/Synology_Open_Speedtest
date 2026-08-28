@@ -122,6 +122,10 @@ jobs:
             # Empty out conf/resource, since the nginx-static-config
             # worker isn't available to 3rd-party packages until DSM 7.2
             # (build 64570) - same as the other DSM 7.x packages.
+            #
+            # REMEMEBR TO SET 7.2 IN PACKAGE.JSON #########################################
+            # "os_min_ver": "7.2-64570",
+            #
             echo '{}' > "$tmpdir/conf/resource"
             sed -i -E 's/os_min_ver="[0-9.]+-[0-9]+"/os_min_ver="7.0-40337"/' "$tmpdir/INFO"
             sed -i 's/os_max_ver="9.9-99999"/os_max_ver="7.1-99999"/' "$tmpdir/INFO"
