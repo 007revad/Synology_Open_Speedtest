@@ -2,7 +2,6 @@
 
 PKG_NAME=$(basename "$SYNOPKG_PKGDEST")
 WEBMAN_LINK="/usr/syno/synoman/webman/3rdparty/${PKG_NAME}"
-BUILD=$(get_key_value /etc.defaults/VERSION buildnumber)
 DSM=$(get_key_value /etc.defaults/VERSION majorversion)
 if [[ "$DSM" -gt "6" ]]; then
     VAR_DIR="/var/packages/$PKG_NAME/var"
@@ -21,10 +20,17 @@ rm -f "${WEBMAN_LINK}" && \
     log_message "Removed webman symlink" || \
     log_message "Warning: Could not remove webman symlink"
 
-#if [[ "$DSM" -le "6" ]]; then
-if [[ "$BUILD" -le "64000" ]]; then  # DSM 6, 7.0 and 7.1
-    rm -f "/usr/syno/share/nginx/conf.d/dsm.$PKG_NAME.conf"
-    log_message "Removed DSM 6, 7.0, 7.1 nginx config symlink"
+# Remove older package version's nginx conf symlink
+# It actually caused wildly inaccurate Upload speeds via https
+if [[ "$DSM" -le "6" ]]; then
+    NGINX_LINK="/usr/syno/share/nginx/conf.d/dsm.$PKG_NAME.conf"
+    if [ -L "$NGINX_LINK" ]; then
+        rm -f "$NGINX_LINK" && \
+            log_message "Removed DSM 6 nginx config symlink" || \
+            log_message "Warning: Failed to remove DSM 6 nginx config symlink"
+    else
+        log_message "No DSM 6 nginx config symlink found"
+    fi
 fi
 
 exit 0

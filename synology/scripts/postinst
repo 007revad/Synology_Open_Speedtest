@@ -30,17 +30,6 @@ rm -rf "$UI_DIR/texts/strings"  # strings file template
 rm -f  "$UI_DIR/ui"  # self-referencing symlink
 log_message "Removed spurious package builder files"
 
-# Create nginx config symlink
-#if [[ "$DSM" -le "6" ]]; then
-if [[ "$BUILD" -le "64000" ]]; then  # DSM 6, 7.0 and 7.1
-    if ln -sf "/var/packages/$PKG_NAME/target/conf/nginx-upload.conf" \
-              "/usr/syno/share/nginx/conf.d/dsm.$PKG_NAME.conf"; then
-        log_message "Created DSM 6 nginx config symlink"
-    else
-        log_message "Error: Failed to create DSM 6 nginx config symlink"
-    fi
-fi
-
 # Set execute permission on resize.cgi
 chmod +x "$UI_DIR/resize.cgi" 2>/dev/null
 log_message "Set execute permission on resize.cgi"

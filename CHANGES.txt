@@ -1,3 +1,8 @@
+v1.0.17
+- Bug fix https resulting in low or impossibly high Upload speed.
+- Bug fix for DSM 7.0-7.1 "Network Error".
+- Bug fix for Package Center's frequent status checks appending blank lines to install.log.
+
 v1.0.16
 - Bug fix for DSM 7.0-7.1.
 
