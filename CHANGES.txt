@@ -1,5 +1,9 @@
+v1.0.18
+- Changed icon to have rounded corners.
+- Bug fix for DSM 6 package upgrade not reloading nginx.
+
 v1.0.17
-- Bug fix https resulting in low or impossibly high Upload speed.
+- Bug fix for https resulting in low or impossibly high Upload speed.
 - Bug fix for DSM 7.0-7.1 "Network Error".
 - Bug fix for Package Center's frequent status checks appending blank lines to install.log.
 
